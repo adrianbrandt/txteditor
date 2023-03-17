@@ -1,7 +1,4 @@
-package org.adrianBrandt;
-
 import com.formdev.flatlaf.FlatDarkLaf;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,30 +7,21 @@ import java.awt.print.PrinterException;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-public class Main extends JFrame {
-    private JFileChooser fileChooser;
-    private JTextArea textArea;
-    private File currentFile;
-    private JProgressBar progressBar;
 
+public class Main extends JFrame {private JFileChooser fileChooser;private JTextArea textArea;private File currentFile;private JProgressBar progressBar;
     public Main() {
         setTitle("File Editor");
-
         try {
             UIManager.setLookAndFeel(new FlatDarkLaf());
         } catch (UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
-
         fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new File("."));
-
         JPanel panel = new JPanel(new BorderLayout());
-
         textArea = new JTextArea();
         JScrollPane scrollPane = new JScrollPane(textArea);
         panel.add(scrollPane, BorderLayout.CENTER);
-
         JButton openButton = new JButton("Open");
         openButton.addActionListener(new ActionListener() {
             @Override
@@ -84,7 +72,6 @@ public class Main extends JFrame {
                             writer.close();
                             return null;
                         }
-
                         @Override
                         protected void done() {
                             progressBar.setIndeterminate(false);
@@ -96,7 +83,6 @@ public class Main extends JFrame {
                 }
             }
         });
-
         JButton printButton = new JButton("Print");
         printButton.addActionListener(new ActionListener() {
             @Override
@@ -113,21 +99,17 @@ public class Main extends JFrame {
                 }
             }
         });
-
         JPanel buttonPanel = new JPanel(new GridLayout(1, 3));
         buttonPanel.add(openButton);
         buttonPanel.add(saveButton);
         buttonPanel.add(printButton);
         panel.add(buttonPanel, BorderLayout.NORTH);
-
         add(panel);
-
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
     public static void main(String[] args) {
         new Main();
     }

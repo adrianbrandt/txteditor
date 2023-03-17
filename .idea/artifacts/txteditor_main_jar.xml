@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="txteditor.main:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/txteditor_main_jar</output-path>
+    <root id="root">
+      <element id="archive" name="txteditor.main.jar">
+        <element id="module-output" name="txteditor.main" />
+      </element>
+      <element id="library" level="project" name="Gradle: com.formdev:flatlaf:3.0" />
+    </root>
+  </artifact>
+</component>
